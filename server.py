@@ -299,7 +299,11 @@ def run():
     db.createUsersTable()
     db = None # disconnect
 
-    listen = ("0.0.0.0", 8080)
+    port = 8080
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+        
+    listen = ("0.0.0.0", port)
     server = HTTPServer(listen, MyRequestHandler)
 
     print("Listening...")
