@@ -24,12 +24,12 @@ class CharacterDB:
 		self.connection.close()
 
 	def createCharactersTable(self):
-		sql= "CREATE TABLE IF NOT EXISTS characters (id serial PRIMARY KEY, name VARCHAR(255), level VARCHAR(255), race VARCHAR(255), cclass VARCHAR(255), alignment VARCHAR(255), XP serial);"
+		self.cursor.execute("CREATE TABLE IF NOT EXISTS characters (id serial PRIMARY KEY, name VARCHAR(255), level VARCHAR(255), race VARCHAR(255), cclass VARCHAR(255), alignment VARCHAR(255), XP serial)")
 		self.connection.commit()
 		return
 
 	def createUsersTable(self):
-		sql= "CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY, firstname VARCHAR(255), lastname VARCHAR(255), username VARCHAR(255), email VARCHAR(255), password VARCHAR(255));"
+		self.cursor.execute("CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY, firstname VARCHAR(255), lastname VARCHAR(255), username VARCHAR(255), email VARCHAR(255), password VARCHAR(255))")
 		self.connection.commit()
 		return
 
