@@ -4,19 +4,19 @@ import psycopg2.extras
 import urllib.parse
 
 def dict_factory(cursor, row):
-    d = {}
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d
+	d = {}
+	for idx, col in enumerate(cursor.description):
+		d[col[0]] = row[idx]
+	return d
 
 class CharacterDB:
 
 	def __init__(self):
 		urllib.parse.uses_netloc.append("postgres")
-    	url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+		url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
-   	    self.connection = psycopg2.connect(cursor_factory=psycopg2.extras.RealDictCursor, database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port)
-        self.cursor = self.connection.cursor()
+		self.connection = psycopg2.connect(cursor_factory=psycopg2.extras.RealDictCursor, database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port)
+		self.cursor = self.connection.cursor()
 
 
 	def __del__(self):
