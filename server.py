@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 import json
+import sys
 from dnd_db import CharacterDB
 from session_store import SessionStore
 from http import cookies
@@ -302,7 +303,7 @@ def run():
     port = 8080
     if len(sys.argv) > 1:
         port = int(sys.argv[1])
-        
+
     listen = ("0.0.0.0", port)
     server = HTTPServer(listen, MyRequestHandler)
 
