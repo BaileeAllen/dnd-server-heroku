@@ -35,19 +35,19 @@ class CharacterDB:
 
 
 	def createCharacter(self, name, level, race, cclass, alignment, XP):
-		sql = "INSERT INTO characters (name, class, race, level, alignment, XP) VALUES(?, ?, ?, ?, ?, ?)"
+		sql = "INSERT INTO characters (name, class, race, level, alignment, XP) VALUES(%s, %s, %s, %s, %s, %s)"
 		self.cursor.execute(sql, [name, cclass, race, level, alignment, XP])
 		self.connection.commit()
 		return
 
 	def deleteCharacter(self, id):
-		sql = "DELETE FROM characters WHERE id = ?"
+		sql = "DELETE FROM characters WHERE id = %s"
 		self.cursor.execute(sql, [id])
 		self.connection.commit()
 		return
 
 	def updateCharacter(self, name, level, race, cclass, alignment, XP, id):
-		sql = "UPDATE characters SET name=?, level=?, race=?, class=?, alignment=?, XP=? WHERE id=?"
+		sql = "UPDATE characters SET name=%s, level=%s, race=%s, class=%s, alignment=%s, XP=%s WHERE id=%s"
 		self.cursor.execute(sql, [name, cclass, race, level, alignment, XP, id])
 		self.connection.commit()
 		return
@@ -57,17 +57,17 @@ class CharacterDB:
 		return self.cursor.fetchall()
 
 	def getCharacter(self, id):
-		sql = "SELECT * FROM characters WHERE id = ?"
+		sql = "SELECT * FROM characters WHERE id = %s"
 		self.cursor.execute(sql, [id]) #data must be a list
 		return self.cursor.fetchone()
 
 	def getUser(self, email):
-		sql = "SELECT * FROM users WHERE email = ?"
+		sql = "SELECT * FROM users WHERE email = %s"
 		self.cursor.execute(sql, [email]) #data must be a list
 		return self.cursor.fetchone()
 
 	def createUser(self, firstName, lastName, username, email, password):
-		sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES(?, ?, ?, ?, ?)"
+		sql = "INSERT INTO users (firstname, lastname, username, email, password) VALUES(%s, %s, %s, %s, %s)"
 		self.cursor.execute(sql, [firstName, lastName, username, email, password])
 		self.connection.commit()
 		return
