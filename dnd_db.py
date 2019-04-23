@@ -35,7 +35,7 @@ class CharacterDB:
 
 
 	def createCharacter(self, name, level, race, cclass, alignment, XP):
-		sql = "INSERT INTO characters (name, class, race, level, alignment, XP) VALUES(%s, %s, %s, %s, %s, %s)"
+		sql = "INSERT INTO characters (name, cclass, race, level, alignment, XP) VALUES(%s, %s, %s, %s, %s, %s)"
 		self.cursor.execute(sql, [name, cclass, race, level, alignment, XP])
 		self.connection.commit()
 		return
@@ -47,7 +47,7 @@ class CharacterDB:
 		return
 
 	def updateCharacter(self, name, level, race, cclass, alignment, XP, id):
-		sql = "UPDATE characters SET name=%s, level=%s, race=%s, class=%s, alignment=%s, XP=%s WHERE id=%s"
+		sql = "UPDATE characters SET name=%s, level=%s, race=%s, cclass=%s, alignment=%s, XP=%s WHERE id=%s"
 		self.cursor.execute(sql, [name, cclass, race, level, alignment, XP, id])
 		self.connection.commit()
 		return
